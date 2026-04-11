@@ -16,17 +16,12 @@ interface WrapState {
   args: string[];
 }
 
-const MAX_STDERR_LINES = 200;
-
 function appendStderr(state: WrapState, chunk: Buffer | string): void {
   const text = typeof chunk === "string" ? chunk : chunk.toString("utf-8");
   for (const line of text.split("\n")) {
     if (line.length > 0) {
       state.stderrLines.push(line);
     }
-  }
-  if (state.stderrLines.length > MAX_STDERR_LINES) {
-    state.stderrLines = state.stderrLines.slice(-MAX_STDERR_LINES);
   }
 }
 
@@ -307,8 +302,10 @@ async function main() {
           ],
         };
       }
+      const text = state.stderrLines.join("\n");
+      state.stderrLines = [];
       return {
-        content: [{ type: "text" as const, text: state.stderrLines.join("\n") }],
+        content: [{ type: "text" as const, text }],
       };
     },
   );
