@@ -1,0 +1,34 @@
+{
+  "name": "mcp-wrap",
+  "version": "1.0.0",
+  "description": "MCP server that wraps another MCP server to expose lifecycle management tools",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-wrap": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "wrapper",
+    "development"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megabytefisher/mcp-wrap.git"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  }
+}
